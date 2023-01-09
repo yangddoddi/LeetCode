@@ -1,38 +1,31 @@
 class Solution {
     public int romanToInt(String s) {
-        Map<String, Integer> map = new LinkedHashMap<>();
+        Map<Character, Integer> map = new LinkedHashMap<>();
         
-        map.put("IV", 4);
-        map.put("IX", 9);
-        map.put("XL", 40);
-        map.put("XC", 90);
-        map.put("CD", 400);
-        map.put("CM", 900);
-        map.put("I", 1);
-        map.put("V", 5);
-        map.put("X", 10);
-        map.put("L", 50);
-        map.put("C", 100);
-        map.put("D", 500);
-        map.put("M", 1000);
-        
-        List<String> list = Arrays.stream(s.split("")).map(e -> e).collect(Collectors.toList());
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
         
         int answer = 0;
-        for (int i=0; i<list.size()-1; i++) {
-            String temp = list.get(i) + list.get(i+1);
-            
-            if (map.containsKey(temp)) {
-                answer += map.get(temp);
-                list.remove(i);
-                list.remove(i);
-                
-                i -= 1;
-            }
-        }
+        char prev = s.charAt(0);
+        answer += map.get(prev);
         
-        for (String str : list) {
-            answer += map.get(str);
+        for (int i=1; i<s.length(); i++) {
+            char curr = s.charAt(i);
+            
+            int prevValue = map.get(prev);
+            int currValue = map.get(curr);
+            
+            if (prevValue < currValue) {
+                answer -= map.get(prev) * 2;
+            }
+            
+            answer += map.get(curr);
+            prev = curr;
         }
         
         return answer;
