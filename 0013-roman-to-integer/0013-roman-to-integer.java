@@ -19,7 +19,6 @@ class Solution {
         List<String> list = Arrays.stream(s.split("")).map(e -> e).collect(Collectors.toList());
         
         int answer = 0;
-        // int limit = list.size();
         for (int i=0; i<list.size()-1; i++) {
             String temp = list.get(i) + list.get(i+1);
             
@@ -29,7 +28,6 @@ class Solution {
                 list.remove(i);
                 
                 i -= 1;
-                // limit -= 2;
             }
         }
         
