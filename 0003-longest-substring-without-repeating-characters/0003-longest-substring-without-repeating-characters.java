@@ -23,10 +23,9 @@ class Solution {
                 }
             }
             
-                map.put(c, 1);
-                right++;
-                answer = Math.max(answer, map.size());
-            
+            map.put(c, 1);
+            right++;
+            answer = Math.max(answer, map.size());
         }
         
         return answer;
