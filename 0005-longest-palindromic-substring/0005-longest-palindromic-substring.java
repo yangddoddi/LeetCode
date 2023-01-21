@@ -33,10 +33,6 @@ class Solution {
             return checked[l][r] = true;
         }
         
-        // if (r+1 > s.length()-1) return false;
-        // 현재 포인터에서 좌우로 한 칸씩 이동했을 때 문자열의 범위를 넘어선다면
-        // 4자리 이상 같은 비교를 할 필요가 없음.
-        
         if (r-l >= 3) {
             if (checked[l+1][r-1]) return checked[l][r] = true;
         }
