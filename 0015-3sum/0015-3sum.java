@@ -21,7 +21,7 @@ class Solution {
                 if (n == 0) {
                     List<Integer> list = List.of(nums[i], nums[j], nums[k]);
                     set.add(list);
-                    k--;
+                    j++;
                 }
             }
         }
